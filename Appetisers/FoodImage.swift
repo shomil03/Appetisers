@@ -24,6 +24,8 @@ struct FoodImage: View {
                 ProgressView()
                 
             }
+            
+            
         }
         .frame(width: 120,height: 90)
         .clipShape(RoundedRectangle(cornerRadius: 12))
