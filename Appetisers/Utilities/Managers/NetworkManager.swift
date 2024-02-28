@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class NetworkManager{
+final class NetworkManager : ObservableObject{
     static let shared = NetworkManager()
     static let baseURL = "https://seanallen-course-backend.herokuapp.com/swiftui-fundamentals/"
     private let appetizserURL = baseURL + "appetizers"
@@ -27,7 +27,7 @@ final class NetworkManager{
         let session = URLSession.shared
         
         let datatask = session.dataTask(with: urlRequest) { data, response, error in
-            if let error = error{
+            if error != nil{
                 completed(.failure(.somethingwentwrong))
                 return
             }

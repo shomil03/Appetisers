@@ -10,7 +10,8 @@ import SwiftUI
 struct FoodImage: View {
     let url : String
     var body: some View {
-        AsyncImage(url: URL(string: url)){phase in
+        AsyncImage(url: URL(string: url) ,
+                   transaction: .init(animation: .bouncy(duration: 1))){phase in
             if let image = phase.image{
                 image.resizable()
                     .scaledToFit()
@@ -27,9 +28,6 @@ struct FoodImage: View {
             
             
         }
-        .frame(width: 120,height: 90)
-        .clipShape(RoundedRectangle(cornerRadius: 12))
-        .padding(.trailing)
     }
 }
 

@@ -13,6 +13,9 @@ struct FoodView: View {
     var body: some View {
         HStack{
             FoodImage(url: appetiser.imageURL)
+                .frame(width: 120,height: 90)
+                .clipShape(RoundedRectangle(cornerRadius: 12))
+                .padding(.trailing)
             VStack(alignment: .leading , spacing: 5){
                 Text(appetiser.name)
                     .font(.title)
