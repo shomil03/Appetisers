@@ -11,6 +11,7 @@ struct DetailView: View {
 
     let appetiser : Appetiser
     @Binding var isshowingDetailView : Bool
+    
     var body: some View {
         
         VStack {
@@ -31,17 +32,10 @@ struct DetailView: View {
             NutritionalView(appetiser: appetiser)
             
             Button(action: {}, label: {
-                Text("\(appetiser.price , specifier: "%.2f")  - Add To Order")
-                    .frame(width: 260 , height: 50)
-                    .background(Color.brandPrimary)
-                    .foregroundStyle(Color.white)
-                    .clipShape(RoundedRectangle(cornerRadius: 20))
-                    .fontWeight(.semibold)
+                ButtonView(text: "\(appetiser.price , specifier: "%.2f")  - Add To Order")
                 
             })
             .padding()
-            
-//            Spacer()
             
         }
         .frame(width: 300 , height: 550 )
@@ -52,16 +46,7 @@ struct DetailView: View {
         .overlay(Button{
             isshowingDetailView = false
         }label: {
-            ZStack{
-                Circle()
-                    .frame(width: 30 , height: 30)
-                    .foregroundStyle(.white)
-                    .opacity(0.5)
-                    Image(systemName: "xmark")
-                    .frame(width: 40 , height: 40)
-                    .imageScale(.small)
-                    .foregroundStyle(.black)
-            }
+            XDismissButton()
         }, alignment: .topTrailing)
         
         

@@ -9,8 +9,7 @@ import SwiftUI
 
 struct AppetiserListView: View {
    @StateObject var viewmodel = AppetiserListViewModel()
-    @State var isShowingDetailView = false
-    @State private var selectedAppetiser : Appetiser?
+    
     
     var body: some View {
         
@@ -25,20 +24,22 @@ struct AppetiserListView: View {
                     List(viewmodel.appetizer){appetiser in
                         FoodView(appetiser: appetiser)
                             .onTapGesture {
-                                selectedAppetiser = appetiser
-                                isShowingDetailView = true
+                                viewmodel.selectedAppetiser = appetiser
+                                withAnimation{
+                                    viewmodel.isShowingDetailView = true
+                                }
                                 
                             }
                         
                     }
-                    .disabled(isShowingDetailView)
+                    .disabled(viewmodel.isShowingDetailView)
                     
                     .tint(Color.brandPrimary)
                     .listStyle(.plain)
                     .navigationTitle("Appetiser")
                 }
             }
-            .blur(radius: isShowingDetailView ? 10 : 0.0)
+            .blur(radius: viewmodel.isShowingDetailView ? 10 : 0.0)
             
             
             .alert(viewmodel.alertItem?.title ?? Text(""),
@@ -54,9 +55,9 @@ struct AppetiserListView: View {
             .onAppear{
                 viewmodel.getAppetiser()
             }
-            if(isShowingDetailView)
+            if(viewmodel.isShowingDetailView)
             {
-                DetailView(appetiser: selectedAppetiser!, isshowingDetailView: $isShowingDetailView)
+                DetailView(appetiser: viewmodel.selectedAppetiser!, isshowingDetailView: $viewmodel.isShowingDetailView)
             }
             
             
