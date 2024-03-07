@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct DetailView: View {
-
+    
+    @EnvironmentObject var order : Order
     let appetiser : Appetiser
     @Binding var isshowingDetailView : Bool
     
@@ -31,7 +32,10 @@ struct DetailView: View {
             
             NutritionalView(appetiser: appetiser)
             
-            Button(action: {}, label: {
+            Button(action: {
+                order.add(appetiser)
+                isshowingDetailView = false
+            }, label: {
                 ButtonView(text: "\(appetiser.price , specifier: "%.2f")  - Add To Order")
                 
             })
@@ -54,5 +58,5 @@ struct DetailView: View {
 }
 
 #Preview {
-    DetailView(appetiser: MockData.sampleAppetiser, isshowingDetailView: .constant(true))
+    DetailView(appetiser: MockData.sampleAppetiser, isshowingDetailView: .constant(true)).environmentObject(Order())
 }

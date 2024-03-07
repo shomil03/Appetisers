@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct AppetiserTabView: View {
+    @EnvironmentObject var order : Order
     var body: some View {
         TabView{
             AppetiserListView()
@@ -27,9 +28,13 @@ struct AppetiserTabView: View {
                 }
         }
         .tint(Color.brandPrimary)
+        .onAppear{
+            print(order.item.count)
+            
+        }
     }
 }
 
 #Preview {
-    AppetiserTabView()
+    AppetiserTabView().environmentObject(Order())
 }

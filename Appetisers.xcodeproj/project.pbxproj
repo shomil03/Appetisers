@@ -19,9 +19,14 @@
 		4F04CF5E2B62DC5A0028F8E4 /* FoodImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F04CF5D2B62DC5A0028F8E4 /* FoodImage.swift */; };
 		4F131DFE2B9627C10059AC3F /* ButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F131DFD2B9627C10059AC3F /* ButtonView.swift */; };
 		4F131E002B9629390059AC3F /* XDismissButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F131DFF2B9629390059AC3F /* XDismissButton.swift */; };
+		4F131E022B9632EE0059AC3F /* AccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F131E012B9632EE0059AC3F /* AccountViewModel.swift */; };
+		4F22CA782B9A072E004B3784 /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F22CA772B9A072E004B3784 /* Order.swift */; };
+		4F25A2532B98EF5100ED179D /* EmptyState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F25A2522B98EF5100ED179D /* EmptyState.swift */; };
 		4F32FDE32B7C2BD6005C64EF /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F32FDE22B7C2BD6005C64EF /* Alert.swift */; };
 		4F76F8422B7E90380010A79B /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F76F8412B7E90380010A79B /* DetailView.swift */; };
 		4F76F8442B7E92D10010A79B /* NutritionalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F76F8432B7E92D10010A79B /* NutritionalView.swift */; };
+		4F8D3B3F2B9636DA00EAD25D /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F8D3B3E2B9636DA00EAD25D /* String+Ext.swift */; };
+		4F8D3B412B96528200EAD25D /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F8D3B402B96528200EAD25D /* User.swift */; };
 		4FD199722B7959610068C22F /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FD199712B7959610068C22F /* NetworkManager.swift */; };
 		4FD199742B795AA70068C22F /* ApError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FD199732B795AA70068C22F /* ApError.swift */; };
 		4FD199762B7963A10068C22F /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FD199752B7963A10068C22F /* ViewModel.swift */; };
@@ -41,9 +46,14 @@
 		4F04CF5D2B62DC5A0028F8E4 /* FoodImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodImage.swift; sourceTree = "<group>"; };
 		4F131DFD2B9627C10059AC3F /* ButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonView.swift; sourceTree = "<group>"; };
 		4F131DFF2B9629390059AC3F /* XDismissButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XDismissButton.swift; sourceTree = "<group>"; };
+		4F131E012B9632EE0059AC3F /* AccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewModel.swift; sourceTree = "<group>"; };
+		4F22CA772B9A072E004B3784 /* Order.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
+		4F25A2522B98EF5100ED179D /* EmptyState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyState.swift; sourceTree = "<group>"; };
 		4F32FDE22B7C2BD6005C64EF /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		4F76F8412B7E90380010A79B /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		4F76F8432B7E92D10010A79B /* NutritionalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutritionalView.swift; sourceTree = "<group>"; };
+		4F8D3B3E2B9636DA00EAD25D /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
+		4F8D3B402B96528200EAD25D /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		4FD199712B7959610068C22F /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		4FD199732B795AA70068C22F /* ApError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApError.swift; sourceTree = "<group>"; };
 		4FD199752B7963A10068C22F /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
@@ -79,6 +89,7 @@
 		4F04CF442B62CA980028F8E4 /* Appetisers */ = {
 			isa = PBXGroup;
 			children = (
+				4F131E032B96354D0059AC3F /* Extensions */,
 				4F131DFC2B9627390059AC3F /* Views */,
 				4F04CF452B62CA990028F8E4 /* AppetisersApp.swift */,
 				4F76F8402B7E8FB00010A79B /* Model */,
@@ -105,6 +116,14 @@
 				4F131DFF2B9629390059AC3F /* XDismissButton.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		4F131E032B96354D0059AC3F /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				4F8D3B3E2B9636DA00EAD25D /* String+Ext.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		4F76F8392B7E8E5B0010A79B /* Screens */ = {
@@ -135,6 +154,7 @@
 			isa = PBXGroup;
 			children = (
 				4F04CF572B62CBA50028F8E4 /* OrderView.swift */,
+				4F25A2522B98EF5100ED179D /* EmptyState.swift */,
 			);
 			path = OrderView;
 			sourceTree = "<group>";
@@ -142,6 +162,7 @@
 		4F76F83C2B7E8E9D0010A79B /* AccountView */ = {
 			isa = PBXGroup;
 			children = (
+				4F131E012B9632EE0059AC3F /* AccountViewModel.swift */,
 				4F04CF552B62CB9E0028F8E4 /* AccountView.swift */,
 			);
 			path = AccountView;
@@ -177,6 +198,8 @@
 			isa = PBXGroup;
 			children = (
 				4F04CF592B62D2A00028F8E4 /* Appetiser.swift */,
+				4F8D3B402B96528200EAD25D /* User.swift */,
+				4F22CA772B9A072E004B3784 /* Order.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -251,12 +274,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F8D3B3F2B9636DA00EAD25D /* String+Ext.swift in Sources */,
 				4FD199722B7959610068C22F /* NetworkManager.swift in Sources */,
 				4F04CF562B62CB9E0028F8E4 /* AccountView.swift in Sources */,
 				4F131DFE2B9627C10059AC3F /* ButtonView.swift in Sources */,
 				4F04CF542B62CB8E0028F8E4 /* AppetiserListView.swift in Sources */,
 				4FD199762B7963A10068C22F /* ViewModel.swift in Sources */,
+				4F22CA782B9A072E004B3784 /* Order.swift in Sources */,
 				4F76F8442B7E92D10010A79B /* NutritionalView.swift in Sources */,
+				4F25A2532B98EF5100ED179D /* EmptyState.swift in Sources */,
 				4FD199742B795AA70068C22F /* ApError.swift in Sources */,
 				4F04CF5C2B62D6F50028F8E4 /* FoodView.swift in Sources */,
 				4F32FDE32B7C2BD6005C64EF /* Alert.swift in Sources */,
@@ -266,7 +292,9 @@
 				4F04CF5E2B62DC5A0028F8E4 /* FoodImage.swift in Sources */,
 				4F04CF582B62CBA50028F8E4 /* OrderView.swift in Sources */,
 				4F04CF5A2B62D2A00028F8E4 /* Appetiser.swift in Sources */,
+				4F131E022B9632EE0059AC3F /* AccountViewModel.swift in Sources */,
 				4F131E002B9629390059AC3F /* XDismissButton.swift in Sources */,
+				4F8D3B412B96528200EAD25D /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

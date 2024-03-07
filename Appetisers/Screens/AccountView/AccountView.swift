@@ -8,35 +8,45 @@
 import SwiftUI
 
 struct AccountView: View {
-    @State private var firstname : String = ""
-    @State private var lastname : String = ""
-    @State private var email : String = ""
-    @State private var bday : Date = Date.now
-    @State private var napkin : Bool = false
-    @State private var refills : Bool = false
+    @StateObject var viewmodel = AccountViewModel()
+    
     var body: some View {
         NavigationStack{
             Form{
                 Section("Personal Information"){
-                    TextField("First Name", text: $firstname)
-                    TextField("Last Name", text: $lastname)
-                    TextField("email", text: $email)
+                    TextField("First Name", text: $viewmodel.user.firstname)
+                    TextField("Last Name", text: $viewmodel.user.lastname)
+                    TextField("email", text: $viewmodel.user.email)
                         .keyboardType(.emailAddress)
                         .textInputAutocapitalization(.none)
                         .autocorrectionDisabled()
-                    DatePicker("Birthday", selection: $bday , displayedComponents: .date)
+                    DatePicker("Birthday", selection: $viewmodel.user.bday , displayedComponents: .date)
                     
                     Button("Save changes"){
+                        viewmodel.saveChanges()
                     }
                 }
                 Section("Requests"){
-                    Toggle("Extra napkin", isOn: $napkin)
-                    Toggle("Frequent refills", isOn: $refills)
+                    Toggle("Extra napkin", isOn: $viewmodel.user.napkin)
+                    Toggle("Frequent refills", isOn: $viewmodel.user.refills)
                 }
                 
                 
             }.tint(Color.brandPrimary)
+                .alert(viewmodel.alertItem?.title ?? Text(""),
+                       isPresented: $viewmodel.isshowingAlert,
+                       actions: {
+                    Button("OK") {
+                        viewmodel.isshowingAlert = false
+                    }
+                },
+                       message:  {
+                    (viewmodel.alertItem?.message ?? Text(""))
+                })
                 .navigationTitle("Account")
+                .onAppear(perform: {
+                    viewmodel.retrieveData()
+                })
         }
         
     }
