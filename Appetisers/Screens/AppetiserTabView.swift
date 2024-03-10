@@ -25,13 +25,10 @@ struct AppetiserTabView: View {
                 .tabItem {
                     Image(systemName: "bag")
                     Text("Order")
-                }
+                }.badge(order.item.count)
         }
         .tint(Color.brandPrimary)
-        .onAppear{
-            print(order.item.count)
             
-        }
     }
 }
 

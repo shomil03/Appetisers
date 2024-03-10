@@ -14,45 +14,70 @@ final class NetworkManager : ObservableObject{
     
     private init() {}
     
-    func getAppetizers(completed : @escaping (Result<[Appetiser] , ApError>) -> Void){
-//        check url
+//    func getAppetizers(completed : @escaping (Result<[Appetiser] , ApError>) -> Void){
+////        check url
+//        guard let url = URL(string: appetizserURL) else
+//        {
+//            completed(.failure(.invalidURL))
+//            return
+//        }
+//        
+//        let urlRequest = URLRequest(url: url)
+//        
+//        let session = URLSession.shared
+//        
+//        let datatask = session.dataTask(with: urlRequest) { data, response, error in
+//            if error != nil{
+//                completed(.failure(.somethingwentwrong))
+//                return
+//            }
+//            
+//            guard let response = response as? HTTPURLResponse , response.statusCode == 200 else
+//            {
+//                completed(.failure(.Response))
+//                return
+//            }
+//            
+//            guard let data = data else{
+//                completed(.failure(.InvalidData))
+//                return
+//            }
+//            
+//            do{
+//                let decoder = JSONDecoder()
+//                let decodedResponse = try decoder.decode(AppetiserResponse.self, from: data)
+//                completed(.success(decodedResponse.request))
+//            }catch{
+//                completed(.failure(.InvalidData))
+//                return
+//            }
+//        }
+//        datatask.resume()
+//        
+//    }
+    func getAppetizers() async throws -> [Appetiser]{
+        //        check url
         guard let url = URL(string: appetizserURL) else
         {
-            completed(.failure(.invalidURL))
-            return
+            throw ApError.invalidURL
         }
+        let (data , response) = try await URLSession.shared.data(from: url)
         
-        let urlRequest = URLRequest(url: url)
-        
-        let session = URLSession.shared
-        
-        let datatask = session.dataTask(with: urlRequest) { data, response, error in
-            if error != nil{
-                completed(.failure(.somethingwentwrong))
-                return
-            }
-            
             guard let response = response as? HTTPURLResponse , response.statusCode == 200 else
             {
-                completed(.failure(.Response))
-                return
+                throw ApError.Response
             }
             
-            guard let data = data else{
-                completed(.failure(.InvalidData))
-                return
-            }
+           
             
             do{
                 let decoder = JSONDecoder()
-                let decodedResponse = try decoder.decode(AppetiserResponse.self, from: data)
-                completed(.success(decodedResponse.request))
+                return try decoder.decode(AppetiserResponse.self, from: data).request
+               
             }catch{
-                completed(.failure(.InvalidData))
-                return
+                throw ApError.InvalidData
             }
-        }
-        datatask.resume()
+        
         
     }
 }

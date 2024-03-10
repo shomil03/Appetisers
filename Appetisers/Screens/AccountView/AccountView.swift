@@ -9,14 +9,33 @@ import SwiftUI
 
 struct AccountView: View {
     @StateObject var viewmodel = AccountViewModel()
+    @FocusState private var isFocused : SelectedTextField?
+    enum SelectedTextField{
+        case firstName , lastName , email
+    }
     
     var body: some View {
         NavigationStack{
             Form{
                 Section("Personal Information"){
                     TextField("First Name", text: $viewmodel.user.firstname)
+                        .focused($isFocused, equals: .firstName)
+                        .onSubmit {
+                            isFocused = .lastName
+                        }
+                        .submitLabel(.next)
                     TextField("Last Name", text: $viewmodel.user.lastname)
+                        .focused($isFocused , equals: .lastName)
+                        .onSubmit {
+                            isFocused = .email
+                        }
+                        .submitLabel(.next)
                     TextField("email", text: $viewmodel.user.email)
+                        .focused($isFocused , equals: .email)
+                        .onSubmit {
+                            isFocused = nil
+                        }
+                        .submitLabel(.continue)
                         .keyboardType(.emailAddress)
                         .textInputAutocapitalization(.none)
                         .autocorrectionDisabled()
@@ -43,10 +62,19 @@ struct AccountView: View {
                        message:  {
                     (viewmodel.alertItem?.message ?? Text(""))
                 })
+                .toolbar{
+                    ToolbarItemGroup(placement: .keyboard){
+                        Spacer()
+                        Button("Done"){
+                            isFocused = nil
+                        }
+                    }
+                }
                 .navigationTitle("Account")
                 .onAppear(perform: {
                     viewmodel.retrieveData()
                 })
+                
         }
         
     }

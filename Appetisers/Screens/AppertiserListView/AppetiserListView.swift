@@ -17,7 +17,7 @@ struct AppetiserListView: View {
             NavigationStack{
                 ZStack{
                     if viewmodel.isLoading{
-                        ProgressView()
+                        ProgressView("Loading")
                             .tint(Color.brandPrimary)
                             .scaleEffect(4)
                     }
@@ -52,8 +52,8 @@ struct AppetiserListView: View {
                    message:  {
                 (viewmodel.alertItem?.message ?? Text(""))
             })
-            .onAppear{
-                viewmodel.getAppetiser()
+            .task {
+                await viewmodel.getAppetiser()
             }
             if(viewmodel.isShowingDetailView)
             {
